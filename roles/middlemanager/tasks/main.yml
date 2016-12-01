@@ -1,0 +1,9 @@
+- name: Copy runtime.properties for Druid middle manager
+  template: src=runtime.properties dest=/usr/local/druid/conf/druid/middleManager/
+        owner={{ ansible_user }} mode=0755
+  become: yes
+
+- name: Copy jvm.config for Druid middle manager
+  template: src=jvm.config dest=/usr/local/druid/conf/druid/middleManager/
+        owner={{ ansible_user }} mode=0755
+  become: yes

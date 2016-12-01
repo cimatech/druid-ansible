@@ -1,0 +1,6 @@
+---
+# file: historical.yml
+- hosts: historical
+  roles:
+    - common
+    - historical

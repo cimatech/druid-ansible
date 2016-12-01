@@ -1,0 +1,9 @@
+- name: Copy runtime.properties for Druid coordinator
+  template: src=runtime.properties dest=/usr/local/druid/conf/druid/coordinator/
+        owner={{ ansible_user }} mode=0755
+  become: yes
+
+- name: Copy jvm.config for Druid coordinator
+  template: src=jvm.config dest=/usr/local/druid/conf/druid/coordinator/
+        owner={{ ansible_user }} mode=0755
+  become: yes

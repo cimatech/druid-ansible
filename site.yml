@@ -1,0 +1,7 @@
+---
+  # file: site.yml
+include: overlord.yml
+include: middlemanager.yml
+include: historical.yml
+include: coordinator.yml
+include: broker.yml

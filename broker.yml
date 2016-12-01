@@ -1,0 +1,6 @@
+---
+# file: broker.yml
+- hosts: broker
+  roles:
+    - common
+    - broker

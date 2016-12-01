@@ -1,0 +1,54 @@
+druid_version=0.9.1.1
+
+zookeeper_host=zk.cima.dk
+
+mysql_host=mysql.cima.dk
+mysql_port=3306
+mysql_dbname=druid
+mysql_username=druid
+mysql_password=xxxxxxx
+
+s3_access_key=xxxxxxx
+s3_secret_key=xxxxxxx
+s3_storage_bucket=cima_druid_deep_storage
+s3_indexing_bucket=cima_druid_indexing_logs
+
+druid01 ansible_ssh_host=druid01.cima.dk fqdn=druid01.cima.dk hostname=druid01
+druid02 ansible_ssh_host=druid02.cima.dk fqdn=druid02.cima.dk hostname=druid02
+druid03 ansible_ssh_host=druid03.cima.dk fqdn=druid03.cima.dk hostname=druid03
+druid04 ansible_ssh_host=druid04.cima.dk fqdn=druid04.cima.dk hostname=druid04
+druid05 ansible_ssh_host=druid05.cima.dk fqdn=druid05.cima.dk hostname=druid05
+druid06 ansible_ssh_host=druid06.cima.dk fqdn=druid06.cima.dk hostname=druid06
+
+[nodes]
+druid01
+druid02
+druid03
+druid04
+druid05
+druid06
+
+[overlord]
+druid01
+
+[middlemanager]
+druid02
+
+[coordinator]
+druid03
+
+[broker]
+druid04
+
+[historical]
+druid05
+
+[tranquility]
+druid06
+
+[druid]
+middlemanager
+coordinator
+broker
+historical
+tranquility

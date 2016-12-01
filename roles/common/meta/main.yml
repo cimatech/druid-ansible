@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: Kristian Martensen - kma@cima.dk
+  description:
+  company: CIMA technologies
+  license: BSD
+  min_ansible_version: 2.0
+  platforms:
+  - name: EL
+    versions:
+    - 7

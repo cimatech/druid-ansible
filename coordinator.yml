@@ -1,0 +1,6 @@
+---
+# file: coordinator.yml
+- hosts: coordinator
+  roles:
+    - common
+    - coordinator

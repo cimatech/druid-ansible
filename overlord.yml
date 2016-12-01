@@ -1,0 +1,6 @@
+---
+# file: overlord.yml
+- hosts: overlord
+  roles:
+    - common
+    - overlord

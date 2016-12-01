@@ -1,0 +1,6 @@
+---
+# file: middlemanager.yml
+- hosts: middlemanager
+  roles:
+    - common
+    - middlemanager

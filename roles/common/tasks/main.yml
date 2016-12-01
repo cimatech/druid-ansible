@@ -1,0 +1,52 @@
+- name: Download druid
+  get_url: url=http://static.druid.io/artifacts/releases/druid-{{ druid_version }}-bin.tar.gz  dest=/tmp/ force=true
+  sudo: yes
+  tags:
+      - druid_install
+      - packages
+
+- name: Download MySQL connector
+  get_url: url=http://static.druid.io/artifacts/releases/mysql-metadata-storage-{{ druid_version }}.tar.gz  dest=/tmp/ force=true
+  sudo: yes
+  tags:
+      - druid_install
+      - packages
+
+- name: unarchive druid
+  unarchive: src="/tmp/druid-{{ druid_version }}-bin.tar.gz" dest=/usr/local/ copy=no
+  sudo: yes
+  tags:
+      - packages
+      - druid_install
+
+- name: Create symlink to /usr/local/druid
+  file: src="/usr/local/druid-{{ druid_version }}" dest=/usr/local/druid state=link
+  sudo: yes
+  tags:
+      - druid_install
+      - druid_symlink
+
+- name: unarchive MySQL connector
+  unarchive: src="/tmp/mysql-metadata-storage-{{ druid_version }}.tar.gz" dest=/usr/local/druid/extensions copy=no
+  sudo: yes
+  tags:
+      - packages
+      - druid_install
+
+- name: ensure druid config directory exists
+  file: path={{ druid_conf_dir }} state=directory
+  sudo: yes
+
+- name: install java8
+  yum: name=java-1.8.0-openjdk
+  sudo: yes
+
+- name: Copy common.properties for Druid node {{ druid_role }}
+  template: src=_common/common.runtime.properties dest=/usr/local/druid/conf/druid/_common/
+        owner={{ ansible_user }} mode=0755
+  become: yes
+
+- name: Copy common.properties for Druid node {{ druid_role }}
+  template: src=_common/log4j2.xml dest=/usr/local/druid/conf/druid/_common/
+        owner={{ ansible_user }} mode=0755
+  become: yes
